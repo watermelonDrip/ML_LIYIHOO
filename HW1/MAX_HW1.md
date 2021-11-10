@@ -1,4 +1,3 @@
-
 # Homework 1: COVID-19 Cases Prediction (Regression)
 Author: Heng-Jui Chang
 
@@ -6,6 +5,16 @@ Slides: https://github.com/ga642381/ML2021-Spring/blob/main/HW01/HW01.pdf
 Videos (Mandarin): https://cool.ntu.edu.tw/courses/4793/modules/items/172854
 https://cool.ntu.edu.tw/courses/4793/modules/items/172853
 Video (English): https://cool.ntu.edu.tw/courses/4793/modules/items/176529
+
+
+## Object
+Solve a regression problem with DNN
+
+## Description & task
+
+![image](https://user-images.githubusercontent.com/69283174/141036190-c6324feb-c921-4ac9-ba39-e50224d9366a.png)
+
+
 
 
 # Hints
