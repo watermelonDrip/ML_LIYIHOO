@@ -32,7 +32,7 @@ id	AL	AK	AZ	AR	CA	CO	CT	FL	GA	ID	IL	IN	IA	KS	KY	LA	MD	MA	MI	MN	MS	MO	NE	NV	NJ	NM
 ### Data description
 + one hot vectors： 用一个 向量 来表示每个特性，sample 满足这个特性时， 该位置值为1
 
-![image](https://user-images.githubusercontent.com/69283174/141039703-e4bf2724-f0a5-4497-80c1-596e077a106d.png)
+![image](https://user-images.githubusercontent.com/69283174/141041131-a5c565dc-71cd-4fb4-a403-6a3c4ce8bdea.png)
 
 + training data: 矩阵维度是2700×94, 2700是sample的个数， 94是所有的属性，其中前40是州，18×3是3天的症状和行为特性和一个确诊。
 
