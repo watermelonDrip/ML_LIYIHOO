@@ -1,1 +1,15 @@
 
+# **Hints**
+
+## **Simple Baseline**
+* Run sample code
+
+## **Medium Baseline**
+* Feature selection: 40 states + 2 `tested_positive` (`TODO` in dataset)
+
+## **Strong Baseline**
+* Feature selection (what other features are useful?)
+* DNN architecture (layers? dimension? activation function?)
+* Training (mini-batch? optimizer? learning rate?)
+* L2 regularization
+* There are some mistakes in the sample code, can you find them?
