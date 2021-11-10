@@ -31,85 +31,23 @@ id	AL	AK	AZ	AR	CA	CO	CT	FL	GA	ID	IL	IN	IA	KS	KY	LA	MD	MA	MI	MN	MS	MO	NE	NV	NJ	NM
 + tested positive: 是否确诊
 ### Data description
 + one hot vectors： 用一个 向量 来表示每个特性，sample 满足这个特性时， 该位置值为1
+![image](https://user-images.githubusercontent.com/69283174/141041273-700baa69-9e7d-4d76-9ae5-8e70dc7f7c2e.png)
 
-![image](https://user-images.githubusercontent.com/69283174/141041131-a5c565dc-71cd-4fb4-a403-6a3c4ce8bdea.png)
+ 
 
 + training data: 矩阵维度是2700×94, 2700是sample的个数， 94是所有的属性，其中前40是州，18×3是3天的症状和行为特性和一个确诊。
 
-![image](https://user-images.githubusercontent.com/69283174/141040812-785d465c-d60d-4dd7-bfe8-0bc7f5585b28.png)
+![image](https://user-images.githubusercontent.com/69283174/141041300-bf9380af-ef85-417a-8afe-83fd3bcd11d7.png)
 
+ 
 + testing data: 矩阵维度是893×93, 893是sample的个数， 93是所有的属性，其中前40是州，18×2是2天的所有症状和行为特性和一个确诊。最后一天是17个属性，因为确诊是否是需要预测出来的。
 
-![image](https://user-images.githubusercontent.com/69283174/141040812-785d465c-d60d-4dd7-bfe8-0bc7f5585b28.png)
+![image](https://user-images.githubusercontent.com/69283174/141041326-8cc1e509-81aa-4d84-bc53-b231298ace36.png)
+
 
 ## Code
 
-### COVID19Dataset(Dataset) 
-
-```
-class COVID19Dataset(Dataset):
-    ''' Dataset for loading and preprocessing the COVID19 dataset '''
-    def __init__(self,
-                 path,
-                 mode='train',
-                 target_only=False):
-        self.mode = mode
-
-        # Read data into numpy arrays
-        with open(path, 'r') as fp:
-            data = list(csv.reader(fp))
-            data = np.array(data[1:])[:, 1:].astype(float)
-        
-        if not target_only:
-            feats = list(range(93))
-        else:
-            # TODO: Using 40 states & 2 tested_positive features (indices = 57 & 75)
-            pass
-
-        if mode == 'test':
-            # Testing data
-            # data: 893 x 93 (40 states + day 1 (18) + day 2 (18) + day 3 (17))
-            data = data[:, feats]
-            self.data = torch.FloatTensor(data)
-        else:
-            # Training data (train/dev sets)
-            # data: 2700 x 94 (40 states + day 1 (18) + day 2 (18) + day 3 (18))
-            target = data[:, -1]
-            data = data[:, feats]
-            
-            # Splitting training data into train & dev sets
-            if mode == 'train':
-                indices = [i for i in range(len(data)) if i % 10 != 0]
-            elif mode == 'dev':
-                indices = [i for i in range(len(data)) if i % 10 == 0]
-            
-            # Convert data into PyTorch tensors
-            self.data = torch.FloatTensor(data[indices])
-            self.target = torch.FloatTensor(target[indices])
-
-        # Normalize features (you may remove this part to see what will happen)
-        self.data[:, 40:] = \
-            (self.data[:, 40:] - self.data[:, 40:].mean(dim=0, keepdim=True)) \
-            / self.data[:, 40:].std(dim=0, keepdim=True)
-
-        self.dim = self.data.shape[1]
-
-        print('Finished reading the {} set of COVID19 Dataset ({} samples found, each dim = {})'
-              .format(mode, len(self.data), self.dim))
-
-    def __getitem__(self, index):
-        # Returns one sample at a time
-        if self.mode in ['train', 'dev']:
-            # For training
-            return self.data[index], self.target[index]
-        else:
-            # For testing (no target)
-            return self.data[index]
-
-    def __len__(self):
-        # Returns the size of the dataset
-        return len(self.data)
- ```
+ 
 
 
 # Hints
@@ -119,8 +57,10 @@ class COVID19Dataset(Dataset):
 Run sample code
 
 ## Medium Baseline 
-  Feature selection: 40 states + 2 `tested_positive` (`TODO` in dataset)
-
+ Feature selection: 40 states + 2 `tested_positive` (`TODO` in dataset)
+```python
+ feats = list(range(40)) + [57] + [75]
+ ```
 ## Strong Baseline 
 1. Feature selection (what other features are useful?)
 2. DNN architecture (layers? dimension? activation function?)
