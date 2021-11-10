@@ -30,11 +30,16 @@ id	AL	AK	AZ	AR	CA	CO	CT	FL	GA	ID	IL	IN	IA	KS	KY	LA	MD	MA	MI	MN	MS	MO	NE	NV	NJ	NM
 + 5 mental health(5个精神状况）：anxious	depressed	felt_isolated	worried_become_ill	worried_finances	
 + tested positive: 是否确诊
 ### Data description
-one hot vectors： 用一个 向量 来表示每个特性，sample 满足这个特性时， 该位置值为1
++ one hot vectors： 用一个 向量 来表示每个特性，sample 满足这个特性时， 该位置值为1
+
 ![image](https://user-images.githubusercontent.com/69283174/141039703-e4bf2724-f0a5-4497-80c1-596e077a106d.png)
-training data: 矩阵维度是2700×94, 2700是sample的个数， 94是所有的属性，其中前40是州，18×3是3天的症状和行为特性和一个确诊。
+
++ training data: 矩阵维度是2700×94, 2700是sample的个数， 94是所有的属性，其中前40是州，18×3是3天的症状和行为特性和一个确诊。
+
 ![image](https://user-images.githubusercontent.com/69283174/141040812-785d465c-d60d-4dd7-bfe8-0bc7f5585b28.png)
-testing data: 矩阵维度是893×93, 893是sample的个数， 93是所有的属性，其中前40是州，18×2是2天的所有症状和行为特性和一个确诊。最后一天是17个属性，因为确诊是否是需要预测出来的。
+
++ testing data: 矩阵维度是893×93, 893是sample的个数， 93是所有的属性，其中前40是州，18×2是2天的所有症状和行为特性和一个确诊。最后一天是17个属性，因为确诊是否是需要预测出来的。
+
 ![image](https://user-images.githubusercontent.com/69283174/141040812-785d465c-d60d-4dd7-bfe8-0bc7f5585b28.png)
 
 ## Code
