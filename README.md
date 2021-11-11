@@ -4,3 +4,8 @@
 
 - 10/11/2021
  HW1: baseline, medianline
+
+- [ ] Homework 2-1 Phoneme Classification
+
+- 11/11/2021
+ HW2: baseline 
