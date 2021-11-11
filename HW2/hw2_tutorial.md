@@ -33,9 +33,14 @@ input: （1）training data: 11 frames 的处理过的特征，包括前五frame
 
 ## Hint
 ### Simple baseline 
+
 You should able to pass the simple baseline using the sample code provided.
+
 ### Strong baseline
+
 Model architecture (layers? dimension? activation function?)
+
 Training (batch size? optimizer? learning rate? epoch?)
+
 Tips (batch norm? dropout? regularization?)
  
