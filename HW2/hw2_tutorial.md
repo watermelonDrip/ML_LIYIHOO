@@ -15,7 +15,8 @@ Solve a Multiclass Classification problem(Framewise phoneme prediction from spee
 ### Data preprocessing
 <img width="1064" alt="2" src="https://user-images.githubusercontent.com/69283174/141235715-255c322c-276f-44c0-976b-8d6c44430f96.png">
 
-首先，输入的声音信号是一串的向量。可以将每25ms的声音转化为一个向量，通过MFCC，将其转化为一个维度为39的维度。
-生成一下一个向量的时候，往后移动10ms，这样生成的向量之间是包含重复内容的。
+可以将每25ms的声音转化为一个向量，最近使用的是通过filter bank output将其转化为一个维度为80的向量。
+生成下一个向量的时候，不是直接向后移动25，而是小于25的10，因此生成的向量是包含重复内容的。
 
 
+<img width="1207" alt="3" src="https://user-images.githubusercontent.com/69283174/141269582-90bd132d-3d23-4c56-b561-c9d734f5a1fa.png">
