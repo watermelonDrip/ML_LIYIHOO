@@ -20,3 +20,17 @@ Solve a Multiclass Classification problem(Framewise phoneme prediction from spee
 
 
 <img width="1207" alt="3" src="https://user-images.githubusercontent.com/69283174/141269582-90bd132d-3d23-4c56-b561-c9d734f5a1fa.png">
+
+### Data analysis
+Size of training data: (1229932, 429)
+Size of testing data: (451552, 429)
+input: 11 frames 的处理过的特征，包括前五frames+ 当前frame +后五frames。每一帧是39维，所以input 11✖️39=429维度
+
+## Hint
+### Simple baseline 
+You should able to pass the simple baseline using the sample code provided.
+### Strong baseline
+Model architecture (layers? dimension? activation function?)
+Training (batch size? optimizer? learning rate? epoch?)
+Tips (batch norm? dropout? regularization?)
+ 
