@@ -22,9 +22,13 @@ Solve a Multiclass Classification problem(Framewise phoneme prediction from spee
 <img width="1207" alt="3" src="https://user-images.githubusercontent.com/69283174/141269582-90bd132d-3d23-4c56-b561-c9d734f5a1fa.png">
 
 ### Data analysis
+<img width="379" alt="4" src="https://user-images.githubusercontent.com/69283174/141303343-c3ac4f71-8571-47b5-8f05-3a2e2d3ca557.png">
+     
 Size of training data: (1229932, 429)
+
 Size of testing data: (451552, 429)
-input: 11 frames 的处理过的特征，包括前五frames+ 当前frame +后五frames。每一帧是39维，所以input 11✖️39=429维度
+
+input: 11 frames 的处理过的特征，包括前五frames+ 当前frame +后五frames。每一帧是39维，所以input 11✖️39=429维度。图中的label指的 就是中间那帧的特征。
 
 ## Hint
 ### Simple baseline 
