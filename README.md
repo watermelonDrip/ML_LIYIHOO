@@ -9,3 +9,6 @@
 
 - 11/11/2021
  HW2: baseline 
+
+- [ ] Homework 3 - Convolutional Neural Network 
+ HW3: 
