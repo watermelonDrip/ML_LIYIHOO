@@ -227,7 +227,8 @@ class Classifier(nn.Module):
         
          `self.layer1 = nn.Linear(429, 1024)` 
         
-        ![Untitled](HW2-1%204ee0d5114887464b97fd88abd576581f/Untitled.png)
+        ![Untitled](https://user-images.githubusercontent.com/69283174/141734188-1d2f5e81-2ae2-4401-8490-28f83c7231d3.png)
+
         
     - 第二层        self.layer2 = nn.Linear(1024, 512)
     - 第三层       self.layer3 = nn.Linear(512, 128)
@@ -235,8 +236,8 @@ class Classifier(nn.Module):
     - 激活函数    self.act_fn = nn.Sigmoid()
     - 整个流程简单表示这样的
     
-    ![Untitled](HW2-1%204ee0d5114887464b97fd88abd576581f/Untitled%201.png)
-    
+     ![Untitled 1](https://user-images.githubusercontent.com/69283174/141734203-df2017c8-da7d-4213-8265-33cbb690f0ed.png)
+
 1. training
 
 (1) 设备检测
