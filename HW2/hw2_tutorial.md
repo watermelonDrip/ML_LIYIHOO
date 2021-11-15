@@ -14,12 +14,13 @@ Solve a Multiclass Classification problem(Framewise phoneme prediction from spee
 
 ### Data preprocessing
 <img width="1064" alt="2" src="https://user-images.githubusercontent.com/69283174/141235715-255c322c-276f-44c0-976b-8d6c44430f96.png">
-
-可以将每25ms的声音转化为一个向量，最近使用的是通过filter bank output将其转化为一个维度为80的向量。本次作业自取了39维度的特征。
+25ms 的window, 可以将每25ms的声音转化为一个向量，最近使用的是通过MFCC将其转化为一个维度为39的向量。本次作业自取了39维度的特征。(也可以采用filter bank 产生80维度）。在图中看到的  长度length d宽度的图，其中d = 39。
 生成下一个向量的时候，不是直接向后移动25，而是小于25的10，因此生成的向量是包含重复内容的。
 
 
 <img width="1207" alt="3" src="https://user-images.githubusercontent.com/69283174/141269582-90bd132d-3d23-4c56-b561-c9d734f5a1fa.png">
+
+
 
 ### Data analysis
 <img width="379" alt="4" src="https://user-images.githubusercontent.com/69283174/141303343-c3ac4f71-8571-47b5-8f05-3a2e2d3ca557.png">
@@ -28,7 +29,7 @@ Size of training data: (1229932, 429)
 
 Size of testing data: (451552, 429)
 
-input: （1）training data: 11 frames 的处理过的特征，包括前五frames+ 当前frame +后五frames。每一帧是39维，所以input 11✖️39=429维度。图中的label指的 就是中间那帧的特征。
+input: （1）training data: 11 frames 的处理过的特征，包括前五frames+ 当前frame（需要predict的label） +后五frames。每一帧是39维，所以input 11✖️39=429维度。图中的label指的 就是中间那帧的特征。
           (2) label：39维，因为本次作业给了39个class，每一帧需要判断出是哪个label，因此这次作业也是多分类。
 
 ```python
