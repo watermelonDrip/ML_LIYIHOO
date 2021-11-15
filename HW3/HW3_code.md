@@ -136,14 +136,17 @@ class Classifier(nn.Module):
     
     使用`torch.nn.Sequential`会自动加入激励函数,  HW2中，激励函数实际上是在 forward() 功能中才被调用的.
     
-    ![Untitled](HW3%20cba402b6fc5943d28b9108745e463c8d/Untitled.png)
+    ![Untitled](https://user-images.githubusercontent.com/69283174/141736554-2623ce33-7c83-4a1d-8780-8bcb8d3fb803.png)
     
-    ![Untitled](HW3%20cba402b6fc5943d28b9108745e463c8d/Untitled%201.png)
-    
-    ![Untitled](HW3%20cba402b6fc5943d28b9108745e463c8d/Untitled%202.png)
+![Untitled 1](https://user-images.githubusercontent.com/69283174/141736576-f8d58221-9923-4383-95b1-6e4e1a76afcd.png)
+
+![Untitled 2](https://user-images.githubusercontent.com/69283174/141736587-7be3fdeb-c4fb-4017-b9a9-8fda421b187c.png)
+ 
     
 
-[**CNN基础知识——全连接层（Fully Connected Layer）**](HW3%20cba402b6fc5943d28b9108745e463c8d/CNN%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E5%85%A8%E8%BF%9E%E6%8E%A5%E5%B1%82%EF%BC%88Fully%20Connected%20Layer%EF%BC%89%20136a6c624696427c93b9eed0334395ac.md)
+[**CNN基础知识——全连接层（Fully Connected Layer）**]
+
+(HW3%20cba402b6fc5943d28b9108745e463c8d/CNN%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E5%85%A8%E8%BF%9E%E6%8E%A5%E5%B1%82%EF%BC%88Fully%20Connected%20Layer%EF%BC%89%20136a6c624696427c93b9eed0334395ac.md)
 
 1. Training
 
