@@ -2,7 +2,7 @@
 
 [](https://www.deeplearningbook.org/contents/convnets.html)
 
-1. I**mport packages**
+## I**mport packages**
 
 ```python
 # Import necessary packages.
@@ -19,8 +19,11 @@ from torchvision.datasets import DatasetFolder
 from tqdm.auto import tqdm
 ```
 
-- 
-1. **Dataset, Data Loader, and Transforms**
+ 
+## **Dataset, Data Loader, and Transforms**
+Torchvision provides lots of useful utilities for image preprocessing, data wrapping as well as data augmentation.
+
+Here, since our data are stored in folders by class labels, we can directly apply torchvision.datasets.DatasetFolder for wrapping data without much effort.
 
 ```python
 # It is important to do data augmentation in training.
@@ -40,15 +43,11 @@ test_tfm = transforms.Compose([
     transforms.Resize((128, 128)),
     transforms.ToTensor(),
 ])
-```
-
-- 
-
-```python
+ 
 # Batch size for training, validation, and testing.
 # A greater batch size usually gives a more stable gradient.
 # But the GPU memory is limited, so please adjust it carefully.
-batch_size = 128
+batch_size = 32
 
 # Construct datasets.
 # The argument "loader" tells how torchvision reads the data.
@@ -63,23 +62,20 @@ valid_loader = DataLoader(valid_set, batch_size=batch_size, shuffle=True, num_wo
 test_loader = DataLoader(test_set, batch_size=batch_size, shuffle=False)
 ```
 
-1. **Model**
+## **Model**
 
 The basic model here is simply a stack of convolutional layers followed by some fully-connected layers.
 
 Since there are three channels for a color image (RGB), the input channels of the network must be three. In each convolutional layer, typically the channels of inputs grow, while the height and width shrink (or remain unchanged, according to some hyperparameters like stride and padding).
 
 Before fed into fully-connected layers, the feature map must be flattened into a single one-dimensional vector (for each image). These features are then transformed by the fully-connected layers, and finally, we obtain the "logits" for each class.
-
-### **WARNING -- You Must Know**
-
-You are free to modify the model architecture here for further improvement. However, if you want to use some well-known architectures such as ResNet50, please make sure **NOT** to load the pre-trained weights. Using such pre-trained models is considered cheating and therefore you will be punished. Similarly, it is your responsibility to make sure no pre-trained weights are used if you use **torch.hub** to load any modules.
+ 
 
 For example, if you use ResNet-18 as your model:
 
 model = torchvision.models.resnet18(pretrained=**False**) → This is fine.
 
-model = torchvision.models.resnet18(pretrained=**True**) → This is **NOT** allowed.
+
 
 ```python
 class Classifier(nn.Module):
@@ -88,8 +84,8 @@ class Classifier(nn.Module):
         # The arguments for commonly used modules:
         # torch.nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding)
         # torch.nn.MaxPool2d(kernel_size, stride, padding)
-
         # input image size: [3, 128, 128]
+        
         self.cnn_layers = nn.Sequential(
             nn.Conv2d(3, 64, 3, 1, 1),
             nn.BatchNorm2d(64),
@@ -148,19 +144,21 @@ class Classifier(nn.Module):
 
 (HW3%20cba402b6fc5943d28b9108745e463c8d/CNN%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E2%80%94%E2%80%94%E5%85%A8%E8%BF%9E%E6%8E%A5%E5%B1%82%EF%BC%88Fully%20Connected%20Layer%EF%BC%89%20136a6c624696427c93b9eed0334395ac.md)
 
-1. Training
+## Training
 
 You can finish supervised learning by simply running the provided code without any modification.
 
 The function "get_pseudo_labels" is used for semi-supervised learning. It is expected to get better performance if you use unlabeled data for semi-supervised learning. However, you have to implement the function on your own and need to adjust several hyperparameters manually.
 
-For more details about semi-supervised learning, please refer to [Prof. Lee's slides](https://speech.ee.ntu.edu.tw/~tlkagk/courses/ML_2016/Lecture/semi%20(v3).pdf).
+For more details about semi-supervised learning, please refer to [Prof. Lee's slides](https://speech.ee.ntu.edu.tw/~tlkagk/courses/ML_2016/Lecture/semi%20(v3).pdf).
+
+如果不进行半监督学习，这个function用不上
 
 ```python
 def get_pseudo_labels(dataset, model, threshold=0.65):
     # This functions generates pseudo-labels of a dataset using given model.
     # It returns an instance of DatasetFolder containing images whose prediction confidences exceed a given threshold.
-    # You are NOT allowed to use any models trained on external data for pseudo-labeling.
+   
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
     # Make sure the model is in eval mode.
@@ -189,10 +187,8 @@ def get_pseudo_labels(dataset, model, threshold=0.65):
     return dataset
 ```
 
-- model.train() :启用`BatchNormalization`和 `Dropout`，将`BatchNormalization`和`Dropout`置为`True` 。
-- model.eval(): 不启用 `BatchNormalization` 和 `Dropout`，将`BatchNormalization`和`Dropout`置为`False` 。
-
- 
+  model.train() :启用`BatchNormalization`和 `Dropout`，将`BatchNormalization`和`Dropout`置为`True` 。
+  model.eval(): 不启用 `BatchNormalization` 和 `Dropout`，将`BatchNormalization`和`Dropout`置为`False`  
 
 ```python
 # "cuda" only when GPUs are available.
