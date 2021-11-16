@@ -118,7 +118,7 @@ class Classifier(nn.Module):
         x = self.cnn_layers(x)
 
         # The extracted feature map must be flatten before going to fully-connected layers.
-        x = x.flatten(1)
+        x = x.flatten(1)  # 把影像里面排成的矩阵，拉直，然后丢进fully connected 
 
         # The features are transformed by fully-connected layers to obtain the final logits.
         x = self.fc_layers(x)
