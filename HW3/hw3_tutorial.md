@@ -30,7 +30,7 @@ root/class_y/123.ext
 root/class_y/nsdf3.ext
 root/class_y/asd932_.ext
 ```
-###  pre-processing dataset（Download and load the training data）
+###  pre-processing dataset（load the training data）
 https://machinelearningknowledge.ai/pytorch-dataloader-tutorial-with-example/#What_is_DataLoader_in_PyTorch
 
 ```python
@@ -49,8 +49,9 @@ Transform: Compose(
            )
   ```
   
-# 构建 data loaders,
+### 构建 data loaders,
 ```python
 train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True, num_workers=8, pin_memory=True)
 ```
-Iterate the training set ,输出imgs,lables 
+Iterate the train_loader ,输出imgs,lables 
+
