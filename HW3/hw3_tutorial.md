@@ -49,9 +49,19 @@ Transform: Compose(
            )
   ```
   
-### 构建 data loaders,
+### construct data loaders 
 ```python
 train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True, num_workers=8, pin_memory=True)
 ```
 Iterate the train_loader ,输出imgs,lables 
+
+## Model
+CNN layer
+
+## Train
+### supervised-learning
+
+### semi-supervised-learning
+
+
 
