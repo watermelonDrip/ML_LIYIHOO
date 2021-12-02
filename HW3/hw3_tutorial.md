@@ -30,7 +30,8 @@ root/class_y/123.ext
 root/class_y/nsdf3.ext
 root/class_y/asd932_.ext
 ```
-###  pre-processing dataset
+###  pre-processing dataset（Download and load the training data）
+https://machinelearningknowledge.ai/pytorch-dataloader-tutorial-with-example/#What_is_DataLoader_in_PyTorch
 
 ```python
 # 告诉DataLoader 怎么加载数据
@@ -46,11 +47,10 @@ Transform: Compose(
                Resize(size=(128, 128), interpolation=bilinear, max_size=None, antialias=None)
                ToTensor()
            )
-/usr/local/lib/python3.7/dist-packages/torch/utils/data/dataloader.py:481: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 2, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  cpuset_checked))
   ```
   
-
+# 构建 data loaders,
 ```python
 train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True, num_workers=8, pin_memory=True)
 ```
+Iterate the training set ,输出imgs,lables 
