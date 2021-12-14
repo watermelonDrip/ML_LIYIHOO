@@ -7,6 +7,11 @@
 2. Improve the performance with data augmentations.
 3. Understand how to utilize unlabeled data and how it benefits.
 
+## CNN
+CNN强大在于卷积层强大的特征提取能力，当然我们可以利用CNN将特征提取出来后，用全连接层或决策树、支持向量机等各种机器学习算法模型来进行分类。
+卷积层可通过重复使用卷积核有效地表征局部空间，卷积核（过滤器f i l t e r filterfilter）通过卷积的计算结果（相似度）表示该卷积核和扫描过的图像块的灰色格子部分相吻合的个数——该值越大则说明越符合卷积核的偏好程度。
+——卷积的结果矩阵为特征映射. 
+
 ## Description & Task
 The images are collected from the food-11 dataset classified into 11 classes.
 ● Training set: 280 * 11 labeled images + 6786 unlabeled images
